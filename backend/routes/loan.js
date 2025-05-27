@@ -3,10 +3,16 @@ const router = express.Router();
 const Loan = require('../models/Loan');
 
 router.post('/create', async (req, res) => {
-  const loan = new Loan(req.body);
-  await loan.save();
-  res.json(loan);
-});
+  const { borrowerName, amount, interestRate, termMonths } = req.body;
+
+  const loan = new Loan({
+    borrowerName,
+    amount,
+    interestRate,
+    termMonths,
+    status: 'active',
+    payments: []
+  });
 
 router.get('/all', async (req, res) => {
   const loans = await Loan.find();
