@@ -5,7 +5,7 @@ const Loan = require('../models/Loan');
 // สร้าง loan ใหม่
 router.post('/create', async (req, res) => {
   const { borrowerName, amount, interestRate, termMonths } = req.body;
-
+  console.log("DEBUG: req.body", req.body);
   const loan = new Loan({
     borrowerName,
     amount,
