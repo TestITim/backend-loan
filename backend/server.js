@@ -6,11 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ใช้ router
 const loanRoutes = require('./routes/loan');
 app.use('/loan', loanRoutes);
 
-// เชื่อม MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
